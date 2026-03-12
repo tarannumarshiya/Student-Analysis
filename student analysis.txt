@@ -1,9 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# -------------------------------------
-# Load dataset
-# -------------------------------------
+
 df = pd.read_csv("students.csv")
 
 print("----- FIRST 5 ROWS -----")
@@ -11,17 +9,13 @@ print(df.head())
 print("\n----- BASIC STATISTICS -----")
 print(df.describe())
 
-# -------------------------------------
-# Convert categorical to numeric
-# -------------------------------------
+
 df["Test_Preparation"] = df["Test_Preparation"].map({
     "Completed": 1,
     "Not Completed": 0
 })
 
-# -------------------------------------
-# Scatter Plot: Hours Studied vs Final Score
-# -------------------------------------
+
 plt.figure(figsize=(6, 4))
 plt.scatter(df["Hours_Studied"], df["Final_Score"])
 plt.title("Hours Studied vs Final Score")
@@ -30,9 +24,7 @@ plt.ylabel("Final Score")
 plt.grid(True)
 plt.show()
 
-# -------------------------------------
-# Bar Chart: Student Scores
-# -------------------------------------
+
 plt.figure(figsize=(8, 4))
 plt.bar(df["Name"], df["Final_Score"])
 plt.title("Final Scores of Students")
@@ -41,9 +33,7 @@ plt.ylabel("Final Score")
 plt.xticks(rotation=45)
 plt.show()
 
-# -------------------------------------
-# Correlation Heatmap
-# -------------------------------------
+
 plt.figure(figsize=(6, 4))
 plt.imshow(df.corr(), cmap="viridis")
 plt.colorbar()
@@ -52,12 +42,11 @@ plt.xticks(range(len(df.corr().columns)), df.corr().columns, rotation=45)
 plt.yticks(range(len(df.corr().columns)), df.corr().columns)
 plt.show()
 
-# -------------------------------------
-# Insights
-# -------------------------------------
+
 print("\n----- INSIGHTS -----")
 print("1. Students who study more hours generally score higher.")
 print("2. Higher attendance strongly correlates with better performance.")
 print("3. Completing test preparation leads to better scores.")
 print("4. Hours studied is the strongest indicator of high marks.")
 print("5. Students with low attendance and poor preparation score below 60.")
+
